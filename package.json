@@ -1,0 +1,23 @@
+{
+  "name": "forkify",
+  "version": "1.0.0",
+  "description": "Recipe application",
+  "homepage": "https://github.com/Sondos-Amr/forkify#readme",
+  "bugs": {
+    "url": "https://github.com/Sondos-Amr/forkify/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sondos-Amr/forkify.git"
+  },
+  "license": "ISC",
+  "author": "Sondos Amr",
+  "type": "commonjs",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
