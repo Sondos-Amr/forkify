@@ -13,7 +13,6 @@
   "license": "ISC",
   "author": "Sondos Amr",
   "type": "commonjs",
-  "main": "index.js",
   "directories": {
     "doc": "docs"
   },
