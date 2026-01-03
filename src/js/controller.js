@@ -15,8 +15,12 @@ const renderSpinner = function (parentEl) {
   parentEl.innerHTML = '';
   parentEl.insertAdjacentHTML('afterbegin', html);
 };
-const showRecipe = async function (id) {
+const showRecipe = async function () {
   try {
+    const id = window.location.hash.slice(1);
+
+    if (!id) return;
+
     renderSpinner(recipesContainer);
     const res = await fetch(
       `https://forkify-api.jonas.io/api/v2/recipes/${id}`
