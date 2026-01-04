@@ -1,3 +1,4 @@
+import * as model from './model';
 import icons from 'url:../img/icons.svg';
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
@@ -22,29 +23,8 @@ const showRecipe = async function () {
     if (!id) return;
 
     renderSpinner(recipesContainer);
-    const res = await fetch(
-      `https://forkify-api.jonas.io/api/v2/recipes/${id}`
-    );
-
-    const data = await res.json();
-    if (!res.ok) throw new Error(`${data.message} (${res.status})`);
-
-    let { recipe } = data.data;
-
-    recipe = {
-      id: recipe.id,
-      title: recipe.title,
-      publisher: recipe.publisher,
-      sourceUrl: recipe.source_url,
-      image: recipe.image_url,
-      servings: recipe.servings,
-      cookingTime: recipe.cooking_time,
-      ingredients: recipe.ingredients,
-    };
-
-    console.log(recipe);
-    console.log(data);
-
+    await model.loadRecipe(id);
+    const { recipe } = model.state;
     let markup = `
         <figure class="recipe__fig">
           <img src="${recipe.image}" alt="${
@@ -146,4 +126,4 @@ const showRecipe = async function () {
   }
 };
 
-showRecipe('5ed6604591c37cdc054bc886');
+['hashchange', 'load'].forEach(e => window.addEventListener(e, showRecipe));
