@@ -20,4 +20,8 @@ const showRecipe = async function () {
   }
 };
 
-['hashchange', 'load'].forEach(e => window.addEventListener(e, showRecipe));
+// ['hashchange', 'load'].forEach(e => window.addEventListener(e, showRecipe));
+const init = function () {
+  recipeView.addHandlerRender(showRecipe);
+};
+init();
