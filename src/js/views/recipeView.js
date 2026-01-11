@@ -4,6 +4,7 @@ console.log(fracty);
 class RecipeView {
   #parentElement = document.querySelector('.recipe');
   #data;
+  #errorMessage = `We couldn't find that recipe. Please try another one!`;
   render(data) {
     this.#data = data;
     const markup = this._generateMarkup();
@@ -116,7 +117,7 @@ class RecipeView {
         </div>
     `;
   }
-  renderError(message) {
+  renderError(message = this.#errorMessage) {
     const markup = `
         <div class="error">
             <div>
