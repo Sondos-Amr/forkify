@@ -116,6 +116,20 @@ class RecipeView {
         </div>
     `;
   }
+  renderError(message) {
+    const markup = `
+        <div class="error">
+            <div>
+              <svg>
+                <use href="${icons}/icons.svg#icon-alert-triangle"></use>
+              </svg>
+            </div>
+            <p>${message}</p>
+          </div>
+    `;
+    this.#clear();
+    this.#parentElement.insertAdjacentHTML('afterbegin', markup);
+  }
   renderSpinner() {
     const html = `
       <div class="spinner">
