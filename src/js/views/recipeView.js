@@ -1,22 +1,27 @@
 import fracty from 'fracty';
 import icons from 'url:../../img/icons.svg';
-console.log(fracty);
+
 class RecipeView {
   #parentElement = document.querySelector('.recipe');
   #data;
   #errorMessage = `We couldn't find that recipe. Please try another one!`;
+  #message = '';
+
   render(data) {
     this.#data = data;
     const markup = this._generateMarkup();
     this.#clear();
     this.#parentElement.insertAdjacentHTML('afterbegin', markup);
   }
+
   #clear() {
     this.#parentElement.innerHTML = '';
   }
+
   addHandlerRender(handler) {
     ['hashchange', 'load'].forEach(e => window.addEventListener(e, handler));
   }
+
   _generateMarkup() {
     return `
         <figure class="recipe__fig">
@@ -117,6 +122,7 @@ class RecipeView {
         </div>
     `;
   }
+
   renderError(message = this.#errorMessage) {
     const markup = `
         <div class="error">
@@ -131,6 +137,22 @@ class RecipeView {
     this.#clear();
     this.#parentElement.insertAdjacentHTML('afterbegin', markup);
   }
+
+  renderMessage(message = this.#message) {
+    const markup = `
+        <div class="message">
+            <div>
+              <svg>
+                <use href="${icons}#icon-smile"></use>
+              </svg>
+            </div>
+            <p>${message}</p>
+          </div>
+    `;
+    this.#clear();
+    this.#parentElement.insertAdjacentHTML('afterbegin', markup);
+  }
+
   renderSpinner() {
     const html = `
       <div class="spinner">
