@@ -21,6 +21,13 @@ const showRecipe = async function () {
   }
 };
 
+const controlSearchResults = async function () {
+  await model.loadSearchResults('pasta');
+  console.log('query : ', model.state.search.query);
+  console.log('results : ', model.state.search.results);
+};
+
+controlSearchResults();
 // ['hashchange', 'load'].forEach(e => window.addEventListener(e, showRecipe));
 const init = function () {
   recipeView.addHandlerRender(showRecipe);

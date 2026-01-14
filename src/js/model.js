@@ -46,12 +46,10 @@ export const loadSearchResults = async function (query) {
         image: res.image_url,
       };
     });
-    console.log('query : ', state.search.query);
-    console.log('results : ', state.search.results);
+    // console.log('query : ', state.search.query);
+    // console.log('results : ', state.search.results);
   } catch (err) {
     console.error(`${err} 🚨🚨🚨`);
     throw err;
   }
 };
-
-loadSearchResults('pizza');
