@@ -1,5 +1,6 @@
 import * as model from './model';
 import recipeView from './views/recipeView';
+import searchView from './views/searchView';
 
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
@@ -22,9 +23,15 @@ const showRecipe = async function () {
 };
 
 const controlSearchResults = async function () {
-  await model.loadSearchResults('pasta');
-  console.log('query : ', model.state.search.query);
-  console.log('results : ', model.state.search.results);
+  try {
+    const query = searchView.getQuery();
+    if (!query) return;
+    await model.loadSearchResults(query);
+    console.log('query : ', model.state.search.query);
+    console.log('results : ', model.state.search.results);
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 controlSearchResults();
