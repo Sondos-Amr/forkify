@@ -15,7 +15,7 @@ const showRecipe = async function () {
     recipeView.renderSpinner();
 
     await model.loadRecipe(id);
-    recipeView.render(model.state.recipe);
+    recipeView.render(model.state.res);
   } catch (err) {
     console.error('Error caught in controller:', err);
     recipeView.renderError();

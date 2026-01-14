@@ -8,20 +8,20 @@ export const state = {
   },
 };
 
-export const loadres = async function (id) {
+export const loadRecipe = async function (id) {
   try {
     const data = await getJSON(`${API_URL}${id}`);
-    const { res } = data.data;
+    const { recipe } = data.data; // صححت الاسم من res -> recipe
 
     state.res = {
-      id: res.id,
-      title: res.title,
-      publisher: res.publisher,
-      sourceUrl: res.source_url,
-      image: res.image_url,
-      servings: res.servings,
-      cookingTime: res.cooking_time,
-      ingredients: res.ingredients,
+      id: recipe.id,
+      title: recipe.title,
+      publisher: recipe.publisher,
+      sourceUrl: recipe.source_url,
+      image: recipe.image_url,
+      servings: recipe.servings,
+      cookingTime: recipe.cooking_time,
+      ingredients: recipe.ingredients,
     };
 
     console.log(state.res);
