@@ -5,7 +5,7 @@ import searchView from './views/searchView';
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 const recipesContainer = document.querySelector('.recipe');
-console.log(recipesContainer);
+// console.log(recipesContainer);
 
 const showRecipe = async function () {
   try {
@@ -34,9 +34,10 @@ const controlSearchResults = async function () {
   }
 };
 
-controlSearchResults();
+// controlSearchResults();
 // ['hashchange', 'load'].forEach(e => window.addEventListener(e, showRecipe));
 const init = function () {
   recipeView.addHandlerRender(showRecipe);
+  searchView.addHandlerSearch(controlSearchResults);
 };
 init();
