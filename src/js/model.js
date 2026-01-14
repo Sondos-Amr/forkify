@@ -24,5 +24,18 @@ export const loadRecipe = async function (id) {
     console.log(data);
   } catch (err) {
     console.error(`${err} 🚨🚨🚨`);
+    throw err;
   }
 };
+
+export const loadSearchResults = async function (query) {
+  try {
+    const data = await getJSON(`${API_URL}?search=${query}`);
+    console.log('dataaaa', data);
+  } catch (err) {
+    console.error(`${err} 🚨🚨🚨`);
+    throw err;
+  }
+};
+
+loadSearchResults('pizza');
