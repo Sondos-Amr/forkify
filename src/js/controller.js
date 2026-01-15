@@ -1,7 +1,7 @@
 import * as model from './model';
 import recipeView from './views/recipeView';
 import searchView from './views/searchView';
-
+import resultView from './views/resultView';
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 const recipesContainer = document.querySelector('.recipe');
@@ -24,6 +24,7 @@ const showRecipe = async function () {
 
 const controlSearchResults = async function () {
   try {
+    resultView.renderSpinner();
     const query = searchView.getQuery();
     if (!query) return;
     await model.loadSearchResults(query);
