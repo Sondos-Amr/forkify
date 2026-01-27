@@ -4,8 +4,10 @@ import searchView from './views/searchView';
 import resultView from './views/resultView';
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
-const recipesContainer = document.querySelector('.recipe');
-// console.log(recipesContainer);
+
+if (module.hot) {
+  module.hot.accept();
+}
 
 const showRecipe = async function () {
   try {
@@ -28,8 +30,6 @@ const controlSearchResults = async function () {
     const query = searchView.getQuery();
     if (!query) return;
     await model.loadSearchResults(query);
-    console.log('query : ', model.state.search.query);
-    console.log('results : ', model.state.search.results);
     resultView.render(model.state.search.results);
   } catch (err) {
     console.log(err);

@@ -11,7 +11,7 @@ export const state = {
 export const loadRecipe = async function (id) {
   try {
     const data = await getJSON(`${API_URL}${id}`);
-    const { recipe } = data.data; // صححت الاسم من res -> recipe
+    const { recipe } = data.data;
 
     state.res = {
       id: recipe.id,
@@ -23,9 +23,6 @@ export const loadRecipe = async function (id) {
       cookingTime: recipe.cooking_time,
       ingredients: recipe.ingredients,
     };
-
-    console.log(state.res);
-    console.log(data);
   } catch (err) {
     console.error(`${err} 🚨🚨🚨`);
     throw err;
@@ -46,8 +43,6 @@ export const loadSearchResults = async function (query) {
         image: res.image_url,
       };
     });
-    // console.log('query : ', state.search.query);
-    // console.log('results : ', state.search.results);
   } catch (err) {
     console.error(`${err} 🚨🚨🚨`);
     throw err;
