@@ -1,0 +1,23 @@
+{
+  "name": "forkify",
+  "version": "1.0.0",
+  "description": "Recipe application",
+  "homepage": "https://github.com/Sondos-Amr/forkify#readme",
+  "bugs": {
+    "url": "https://github.com/Sondos-Amr/forkify/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sondos-Amr/forkify.git"
+  },
+  "license": "ISC",
+  "author": "Sondos Amr",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.16.4",
+    "parcel": "^2.16.4"
+  }
+}
