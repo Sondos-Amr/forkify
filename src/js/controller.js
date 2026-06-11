@@ -7,3 +7,36 @@ const timeout = function (s) {
     }, s * 1000);
   });
 };
+
+/////////////////
+
+const showRecipe = async function () {
+  try {
+    const res = await fetch(
+      `https://forkify-api.jonas.io/api/v2/recipes/5ed6604591c37cdc054bc886`,
+    );
+    const data = await res.json();
+    console.log(res, data);
+    if (!res.ok) throw new Error(`${data.message} , ${res.status}`);
+
+    let { recipe } = data.data;
+    recipe = {
+      id: recipe.id,
+      title: recipe.title,
+      publisher: recipe.publisher,
+      sourceURL: recipe.source_url,
+      img: recipe.image_url,
+      servings: recipe.servings,
+      ingredients: recipe.ingredients,
+    };
+  } catch (err) {
+    alert(err);
+  }
+};
+showRecipe();
+
+////////////////
+// fetch(
+//   'https://forkify-api.jonas.io/api/v2/recipes/ab838db5-0766-486b-9c2f-66b54db9fcb5',
+// );
+// af7c6320-cfe3-4ee6-ad50-9acf7dbfba67
